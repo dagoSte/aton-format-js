@@ -1,0 +1,71 @@
+{
+  "name": "aton-format",
+  "version": "2.0.2",
+  "description": "ATON - Adaptive Token-Oriented Notation. A token-efficient data serialization format for LLM applications.",
+  "author": "Stefano D'Agostino <dago.stefano@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dagoSte/aton-format.git"
+  },
+  "homepage": "https://github.com/dagoSte/aton-format#readme",
+  "bugs": {
+    "url": "https://github.com/dagoSte/aton-format/issues"
+  },
+  "keywords": [
+    "aton",
+    "json",
+    "serialization",
+    "token",
+    "llm",
+    "ai",
+    "gpt",
+    "claude",
+    "compression",
+    "data-format",
+    "schema",
+    "typescript"
+  ],
+  "type": "module",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/esm/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/esm/index.d.ts",
+        "default": "./dist/esm/index.js"
+      },
+      "require": {
+        "types": "./dist/cjs/index.d.ts",
+        "default": "./dist/cjs/index.js"
+      }
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "npm run build:esm && npm run build:cjs && npm run build:types",
+    "build:esm": "tsc --outDir dist/esm",
+    "build:cjs": "tsc --project tsconfig.cjs.json",
+    "build:types": "tsc --emitDeclarationOnly --outDir dist/cjs",
+    "clean": "rm -rf dist",
+    "prepublishOnly": "npm run clean && npm run build",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
+    "lint": "eslint src --ext .ts"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "typescript": "^5.3.0"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "sideEffects": false,
+  "dependencies": {
+    "aton-format": "^2.0.2"
+  }
+}
